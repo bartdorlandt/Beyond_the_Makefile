@@ -65,6 +65,7 @@ All of the tools are able to execute the same commands. The difference is in the
 - Easily getting started from scratch
 - Needs make to be installed
 - Probably easy to use in pipeline, since most environments have make installed
+- Need to open the Makefile to read the recipes
 
 ### Justfile
 - Simpeler than Makefile
@@ -72,6 +73,8 @@ All of the tools are able to execute the same commands. The difference is in the
 - Easier than Makefile with more features
 - Needs to be installed, single binary
 - Probably needs to be installed in the pipeline
+- Autocomplete the commands
+- Easy to see the recipes, with the default recipe
 
 ### Taskfile
 - Modern alternative to Makefile
@@ -80,6 +83,9 @@ All of the tools are able to execute the same commands. The difference is in the
 - Needs to be installed, single binary
 - More verbose than the others
 - Probably needs to be installed in the pipeline
+- Autocomplete the commands
+- Easy to see the recipes, with the default recipe
+- Ability to restrict recipes to certain OSes and/or architectures
 
 ### Bash script
 - Full control over the automation process
@@ -87,11 +93,13 @@ All of the tools are able to execute the same commands. The difference is in the
 - No dependencies
 - bash is installed on every system
 - Will run in every pipeline
+- Easy to see the recipes, with the default recipe
 
 ### Invoke
 - Python-based
 - Easy to read and write (if you know Python)
-- More powerful than the others
+- More powerful and flexible than the others
 - More dependencies
 - Python is probably installed on the system
 - Dependencies probably needs to be installed in the pipeline
+- Easy to see the recipes, by running `inv -l`

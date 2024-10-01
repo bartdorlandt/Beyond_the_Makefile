@@ -9,15 +9,6 @@ VERSION="${VERSION:-latest}"
 IMAGE="${IMAGE:-tmp_test_image}"
 PLATFORM="${PLATFORM:-linux/amd64}"
 
-# If we're running in CI we need to disable docker_compose_tty allocation for docker compose
-# commands that enable it by default, such as exec and run.
-docker_compose_tty=""
-docker_run_tty="-it"
-if [[ ! -t 1 ]]; then
-  docker_compose_tty="-T"
-  docker_run_tty=""
-fi
-
 # Souce the .env file
 # Explanations -a is equivalent to allexport. In other words, every variable assignment in the shell is exported into the environment (to be used by multiple child processes).
 # http://gnu.org/software/bash/manual/html_node/The-Set-Builtin.html

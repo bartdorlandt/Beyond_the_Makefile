@@ -17,7 +17,7 @@ default:
 
 [group('docker')]
 build:
-	docker buildx build -f Dockerfile -t {{IMAGE}}:{{VERSION}} --platform {PLATFORM} .
+	docker buildx build -f Dockerfile -t {{IMAGE}}:{{VERSION}} --platform {{PLATFORM}} .
 
 [group('docker')]
 run:

@@ -7,6 +7,7 @@ env:
   PLATFORM: linux/amd64
 
 dotenv: ['.env']
+output: 'group'
 
 tasks:
   default: task --list-all
@@ -16,10 +17,20 @@ tasks:
     aliases: [buildx,init]
     cmds:
       - docker buildx build -f Dockerfile -t $IMAGE:$VERSION --platform $PLATFORM .
+
   run:
     desc: "Building the docker image"
     cmds:
       - docker run --rm $IMAGE:$VERSION
+
+  multiple:
+    desc: "Run the task 'run' multiple times"
+    cmds:
+      - task: run
+      - task: run
+      - task: run
+      - task: run
+    silent: true
 
   print:
     desc: "Printing some string with vars"
@@ -28,3 +39,7 @@ tasks:
       - "echo Variable print. Var1: $(VAR1), Var2: $(VAR2)"
 
 
+# Since v3 there is a short task syntax
+# https://taskfile.dev/usage/#short-task-syntax
+
+  buildv3: docker buildx build -f Dockerfile -t $IMAGE:$VERSION --platform $PLATFORM .
