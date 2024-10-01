@@ -9,15 +9,20 @@ load_dotenv()
 
 
 @task
-def build(c):
-    c.run(f"docker buildx build -f Dockerfile -t {IMAGE}:{VERSION} --platform {PLATFORM} .")
+def build(context):
+    context.run(f"docker buildx build -f Dockerfile -t {IMAGE}:{VERSION} --platform {PLATFORM} .")
 
 @task
-def run(c):
-    c.run(f"docker run --rm {IMAGE}:{VERSION}")
+def run(context):
+    context.run(f"docker run --rm {IMAGE}:{VERSION}")
 
 @task
-def print(c):
+def multiple(context):
+    for _ in range(5):
+        run(context)
+
+@task
+def print(context):
     VAR1 = os.getenv("VAR1")
     VAR2 = os.getenv("VAR2")
-    c.run(f"echo Variable print. Var1: {VAR1}, Var2: {VAR2}")
+    context.run(f"echo Variable print. Var1: {VAR1}, Var2: {VAR2}")
