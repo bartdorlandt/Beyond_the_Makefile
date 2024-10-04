@@ -12,7 +12,7 @@ For each of the tools, you obviously need to have the tool installed on your sys
 
 Makefile is a build automation tool that has been around since the early days of Unix. It uses a file named `Makefile` to define a set of tasks to be executed. These tasks are typically used to compile and link programs, but Makefile can be used for a wide range of automation tasks. The syntax of Makefile is simple yet powerful, allowing for complex dependency management and task execution.
 
-## Taskfile
+## Task
 [Taskfile](https://taskfile.dev/)
 
 Taskfile is a modern alternative to Makefile, designed to be simpler and more intuitive. It uses a YAML-based configuration file named `Taskfile.yml` to define tasks. Taskfile aims to provide a more user-friendly experience while maintaining the power and flexibility needed for complex workflows. It supports features like task dependencies, variables, and cross-platform compatibility. But also some fancy features like the ability to restrict recipes to certain OSes and/or architectures, continously watching a task with an interval and have preconditions for a task.
@@ -67,7 +67,7 @@ All of the tools are able to execute the same commands. The difference is in the
 - Probably easy to use in pipeline, since most environments have make installed
 - Need to open the Makefile to read the recipes
 
-### Justfile
+### Just
 - Simpeler than Makefile
 - Easy to get started
 - Easier than Makefile with more features
@@ -76,7 +76,7 @@ All of the tools are able to execute the same commands. The difference is in the
 - Autocomplete the commands
 - Easy to see the recipes, with the default recipe
 
-### Taskfile
+### Task
 - Modern alternative to Makefile
 - YAML-based configuration
 - Very easy to read and write
@@ -88,6 +88,7 @@ All of the tools are able to execute the same commands. The difference is in the
 - Ability to restrict recipes to certain OSes and/or architectures
 - Abilty to continously watch a task with an interval, which runs only when the source changes
 - Ability to have preconditions for a task
+- [Integrations](https://taskfile.dev/integrations/) in editors like VSCode
 
 ### Bash script
 - Full control over the automation process
@@ -108,6 +109,6 @@ All of the tools are able to execute the same commands. The difference is in the
 
 # Conclusion
 
-In conclusion, each of the tools has its own strengths and weaknesses, and the best choice depends on the specific needs and preferences of the developer. Makefile is a classic tool that is widely used and supported, while Taskfile, Just, and invoke offer modern alternatives with more user-friendly syntax and additional features. For those who prefer a more hands-on approach, writing custom Bash scripts and using invoke provides complete control and flexibility. Ultimately, the choice of tool comes down to personal preference and the requirements of the project. Regardless of which tool you choose, automating repetitive tasks and managing project workflows can help improve productivity and reduce errors in your development process.
+In conclusion, each of the tools has its own strengths and weaknesses, and the best choice depends on the specific needs and preferences of the developer. Makefile is a classic tool that is widely used and supported, while Task, Just, and Invoke offer modern alternatives with more user-friendly syntax and additional features. For those who prefer a more hands-on approach, writing custom Bash scripts and using invoke provides complete control and flexibility. Ultimately, the choice of tool comes down to personal preference and the requirements of the project. Regardless of which tool you choose, automating repetitive tasks and managing project workflows can help improve productivity and reduce errors in your development process.
 
-I suggest to use the Taskfile. It has superpowers compared to the rest, while not having to program it yourself. The most important part is its readability, where even the most novice "developer" can understand what is happening.
+I suggest to use the Task. It has superpowers compared to the rest, while not having to program it yourself. The most important part is its readability, where even the most novice "developer" can understand what is happening. The small side affect of its readability is its verboseness, where a bit more typing is required. Though it pays of, when seeing the output of the `task --list` command.

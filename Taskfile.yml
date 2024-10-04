@@ -7,7 +7,6 @@ env:
   PLATFORM: linux/amd64
 
 dotenv: ['.env']
-output: 'group'
 
 tasks:
   default: task --list-all
