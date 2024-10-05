@@ -4,17 +4,16 @@ import os
 
 VERSION = "latest"
 IMAGE = "tmp_test_image"
-PLATFORM = "linux/amd64"
 load_dotenv()
 
 
 @task
 def build(context):
-    context.run(f"docker buildx build -f Dockerfile -t {IMAGE}:{VERSION} --platform {PLATFORM} .")
+    context.run(f"docker buildx build -f Dockerfile -t {IMAGE}:{VERSION} .")
 
 @task
-def run(context):
-    context.run(f"docker run --rm {IMAGE}:{VERSION}")
+def run(context, extra=''):
+    context.run(f"docker run --rm {IMAGE}:{VERSION} {extra}" )
 
 @task
 def multiple(context):

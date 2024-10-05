@@ -4,23 +4,24 @@ version: '3'
 env:
   VERSION: latest
   IMAGE: tmp_test_image
-  PLATFORM: linux/amd64
 
 dotenv: ['.env']
 
 tasks:
-  default: task --list-all
+  default: task --list-all --sort none
 
   build:
     desc: "Building the docker image"
     aliases: [buildx,init]
     cmds:
-      - docker buildx build -f Dockerfile -t $IMAGE:$VERSION --platform $PLATFORM .
+      - docker buildx build -f Dockerfile -t $IMAGE:$VERSION .
 
+  # May provide more arguments by running `task run -- $anything including spaces is {{.CLI_ARGS}}`
+  # `task run -- echo testing this`
   run:
     desc: "Building the docker image"
     cmds:
-      - docker run --rm $IMAGE:$VERSION
+      - docker run --rm $IMAGE:$VERSION {{.CLI_ARGS}}
 
   multiple:
     desc: "Run the task 'run' multiple times"
@@ -35,10 +36,9 @@ tasks:
     desc: "Printing some string with vars"
     silent: true
     cmds:
-      - "echo Variable print. Var1: $(VAR1), Var2: $(VAR2)"
-
+      - "echo Variable print. Var1: {{.VAR1}}, Var2: {{.VAR2}}"
 
 # Since v3 there is a short task syntax
 # https://taskfile.dev/usage/#short-task-syntax
 
-  buildv3: docker buildx build -f Dockerfile -t $IMAGE:$VERSION --platform $PLATFORM .
+  buildv3: docker buildx build -f Dockerfile -t $IMAGE:$VERSION .

@@ -6,7 +6,6 @@ set dotenv-load
 
 VERSION := 'latest'
 IMAGE := 'tmp_test_image'
-PLATFORM := 'linux/amd64'
 
 # internal variables: {{var}}
 # environment variables: $var
@@ -17,11 +16,11 @@ default:
 
 [group('docker')]
 build:
-	docker buildx build -f Dockerfile -t {{IMAGE}}:{{VERSION}} --platform {{PLATFORM}} .
+	docker buildx build -f Dockerfile -t {{IMAGE}}:{{VERSION}} .
 
 [group('docker')]
-run:
-	docker run --rm {{IMAGE}}:{{VERSION}}
+run *args='':
+	docker run --rm {{IMAGE}}:{{VERSION}} $@
 
 # chain tasks
 multiple: run
@@ -31,4 +30,4 @@ multiple: run
 
 # vars can be packed in $ and ${}
 print:
-	echo "Variable print. Var1: $VAR1, Var2: ${VAR2}"
+	echo "Variable print. Var1: ${VAR1}, Var2: ${VAR2}"

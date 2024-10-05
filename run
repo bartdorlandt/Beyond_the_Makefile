@@ -7,7 +7,6 @@ set -o pipefail
 # minus sign: use default if unset
 VERSION="${VERSION:-latest}"
 IMAGE="${IMAGE:-tmp_test_image}"
-PLATFORM="${PLATFORM:-linux/amd64}"
 
 # Souce the .env file
 # Explanations -a is equivalent to allexport. In other words, every variable assignment in the shell is exported into the environment (to be used by multiple child processes).
@@ -35,11 +34,11 @@ function _envfile_present() {
 
 # -----------------------------------------------------------------------------
 function build {
-    docker buildx build -f Dockerfile -t ${IMAGE}:${VERSION} --platform ${PLATFORM} .
+    docker buildx build -f Dockerfile -t ${IMAGE}:${VERSION} .
 }
 
 function run {
-    _echo_run "docker run --rm ${IMAGE}:${VERSION}"
+    _echo_run "docker run --rm ${IMAGE}:${VERSION} $@"
 }
 
 function run:multiple {

@@ -3,10 +3,9 @@ include .env
 
 VERSION = latest
 IMAGE = tmp_test_image
-PLATFORM = linux/amd64
 
 build:
-	docker buildx build -f Dockerfile -t ${IMAGE}:${VERSION} --platform ${PLATFORM} .
+	docker buildx build -f Dockerfile -t ${IMAGE}:${VERSION} .
 
 run:
 	docker run --rm ${IMAGE}:${VERSION}
