@@ -151,6 +151,7 @@ All of the tools are able to execute the same commands. The difference is in the
 - Ability to restrict recipes to certain OSes and/or architectures
 - Abilty to continously watch a task with an interval, which runs only when the source changes
 - Ability to have preconditions for a task
+- Ability to execute dependent tasks in parallel (`deps` keyword)
 - [Integrations](https://taskfile.dev/integrations/) in editors like VSCode
 
 #### Bash script
@@ -174,4 +175,4 @@ All of the tools are able to execute the same commands. The difference is in the
 
 In conclusion, each of the tools has its own strengths and weaknesses, and the best choice depends on the specific needs and preferences of the developer. Makefile is a classic tool that is widely used and supported, while Task, Just, and Invoke offer modern alternatives with more user-friendly syntax and additional features. For those who prefer a more hands-on approach, writing custom Bash scripts and using invoke provides complete control and flexibility. Ultimately, the choice of tool comes down to personal preference and the requirements of the project. Regardless of which tool you choose, automating repetitive tasks and managing project workflows can help improve productivity and reduce errors in your development process.
 
-I suggest to use the Taskfile. It has superpowers compared to the rest, while not having to program it yourself. The most important part is its readability, where even the most novice developer can understand what is happening. Typos are part of the history because it backed by json schema and it has cli complemetion. The small side affect of its readability is its verboseness, where a bit more typing is required. Though it pays of, when seeing the output of the `task --list` command.
+I suggest to use the Taskfile. It has superpowers compared to the rest, while not having to program it yourself. The most important part is its readability, where even the most novice developer can understand what is happening. Typos are part of the history because it backed by json schema and it has cli complemetion. The small side affect of its readability is its verboseness, where a bit more typing is required. Though it pays of, when seeing the output of the `task --list` command, or just `task` if the default task is provided.
